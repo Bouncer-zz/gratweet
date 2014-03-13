@@ -1,0 +1,35 @@
+html {
+margin:0px;
+padding:0px;
+height:100%;
+width:100%;
+}
+body {
+font-family: sans-serif; 
+font-size: 12px;
+margin:0px;
+padding:0px;
+height:100%;
+width:100%;
+background-color: #CCCCCC;
+}
+div {
+	font-family: sans-serif; 
+	font-size: 20px;
+	text-align:center;
+	line-height:20px;
+}
+#logo{
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	width: 400px;
+	height: calc(100% - 480px);
+	padding:0px;
+	margin: 20px;
+	background-color: #FFF; border:2px solid #333; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; 
+}
+#logo img {
+	margin: 20px;
+	width: 360px;
+}
