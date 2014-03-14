@@ -45,22 +45,20 @@
 		</div>
 		<div id='feed'>
 			Twitter feed
-  <div class="demo">
-    <pre class="code">
-      jQuery(function($){
-        $("#query").tweet({
-          avatar_size: 32,
-          count: 10,
-		  lang: "nl",
-          query: "#gratis",
-		  scrollbar: true,
-		  refresh_interval: 60,
-          loading_text: "searching twitter..."
-        });
-      });
-    </pre>
-    <div id="query" class='query'></div>
-  </div>
+			<div class="demo">
+				<pre class="code">
+					jQuery(function($){
+						$("#query").tweet({
+							avatar_size: 32,
+							count: 10,
+							query: "-sex -#sexdating -milf -geil #gratis lang:nl",
+							refresh_interval: 60,
+							loading_text: "searching twitter..."
+						});
+					});
+				</pre>
+				<div id="query" class='query'></div>
+			</div>
 		</div>
 		<div id='map'>
 			Map
