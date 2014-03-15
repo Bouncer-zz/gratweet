@@ -55,7 +55,7 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body  onload=processText()><!--/ onmousemove=processText() om dynamisch tweets te verwerken/-->
 		<div id='logo'>
 			<img src='images/logo.png' border='0' />
 		</div>
@@ -96,7 +96,6 @@
 		<div id='barchart'>
 			Barchart
 			<p id='textHolder'></p> 
-			<input type='button' onclick='processText()' value='verwerk de tweets'/>
 		</div>
 		
 		<script type="text/javascript" src="js/feed.js"></script>
