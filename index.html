@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="js/vendor/jquery-1.11.0.js"></script>
 		<link href="jquery.tweet.css" rel="stylesheet"/>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<script src="jquery.tweet.js" charset="utf-8"></script>
+		 <script type="text/javascript" charset="utf-8" src="/twitter/jquery.tweet.js"></script> 
 		<link rel="stylesheet" type="text/css" href="css/body.css">
 		<link rel="stylesheet" type="text/css" href="css/barchart.css">
 		<link rel="stylesheet" type="text/css" href="css/map.css">
@@ -38,6 +38,22 @@
 			  }).each(function(i, e){ eval($(e).text()); });
 			});
 		</script>
+		<script>//script om huidige tweets te verwerken
+			var tweet_text = document.getElementsByClassName("tweet_text");
+			var tweet_text_raw = new Array();
+			function processText(){
+				
+				
+				for (i=0;i<tweet_text.length;i++)
+				{
+				  if (tweet_text.item(i).nodeType==1)
+				  {
+					tweet_text_raw.push(tweet_text.item(i).innerText);//innerHTML of andere methods kunnen ook hier
+				  }
+				}
+				document.getElementById('textHolder').innerHTML = tweet_text_raw;
+			}
+		</script>
 	</head>
 	<body>
 		<div id='logo'>
@@ -45,26 +61,42 @@
 		</div>
 		<div id='feed' style="overflow: auto;">
 			Twitter feed
-			<div class="demo">
+			<div class="demo" ><!--/https://twitter.com/search?q = ... zie https://twitter.com/search-home voor de opties /-->
 				<pre class="code">
 					jQuery(function($){
 						$("#query").tweet({
 							avatar_size: 32,
-							count: 10,
+							count: 100,
 							query: "-sex -#sexdating -milf -geil -erotisch -erotische #gratis lang:nl",
-							refresh_interval: 60,
+							refresh_interval: 30,
 							loading_text: "searching twitter..."
 						});
 					});
 				</pre>
+				<!--/$('.tweet_even').get()/-->
 				<div id="query" class='query'></div>
 			</div>
 		</div>
 		<div id='map'>
 			Map
+			  <div class="demo"><!--/1.1 api aan roepen met twitter_search_url (zie jquery.tweet.js) en geo krijgen lukt mij niet, zou wel moeten kunnen volgens comments in de tweet.js github(https://github.com/StanScates/Tweet.js-Mod_) /-->
+				<pre class="code">
+					jQuery(function($){
+						$(".tweet").tweet({
+							avatar_size: 32,
+							count: 100,							
+							twitter_search_url: "api.twitter.com/1.1/search/tweets.json?q=%23gratis",
+							loading_text: "searching twitter..."
+						});
+					});
+				</pre>
+				<div class='tweet query'></div>
+			</div>			
 		</div>
 		<div id='barchart'>
 			Barchart
+			<p id='textHolder'></p> 
+			<input type='button' onclick='processText()' value='verwerk de tweets'/>
 		</div>
 		
 		<script type="text/javascript" src="js/feed.js"></script>
