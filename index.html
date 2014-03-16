@@ -44,6 +44,7 @@
 			var tweet_text = document.getElementsByClassName("tweet_text");
 			var tweet_text_raw = new Array();
 			var tokenised_tweets = new Array();
+			var hashtags = new Array();
 			
 			function processText(){
 					
@@ -70,8 +71,24 @@
 					splitString(tweet_text_raw[i], " ");
 				};
 				
+				//haal hashtags uit de tweets
+				//het is misschien leuk om met de hashtags een soort van 'now trending' te maken 
+				//momenteel is de hashtag happyhour en minecraft trending bijv.
+				for (var i=0; i < tokenised_tweets.length; i++){
+					for (var j=0; j < tokenised_tweets[i].length; j++){
+						var token = tokenised_tweets[i][j];
+						var hashtag = token.match(/(#\w+)/g);
+						
+						//if match and not gratis hashtag, then add to hashtags array 
+						if(hashtag != null && hashtag[0].toLowerCase() !="#gratis"){
+							hashtag = hashtag[0].substring(1);//haal de hashtag zelf weg voor string matchen en tellen later
+							hashtags.push(hashtag);
+						}
+					};				
+				};
+								
 			}
-			
+
 		</script>
 	</head>
 	<body  onload=processText()><!--/ onmousemove=processText() om dynamisch tweets te verwerken/-->
