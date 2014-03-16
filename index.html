@@ -38,12 +38,16 @@
 			  }).each(function(i, e){ eval($(e).text()); });
 			});
 		</script>
-		<script>//script om huidige tweets te verwerken
+		<script>//tweet-text processing script
+			
+			//maak variabelen aan voor text processing
 			var tweet_text = document.getElementsByClassName("tweet_text");
 			var tweet_text_raw = new Array();
+			var tokenised_tweets = new Array();
+			
 			function processText(){
-				
-				
+					
+				//haal de text uit de node objecten en stop ze in array
 				for (i=0;i<tweet_text.length;i++)
 				{
 				  if (tweet_text.item(i).nodeType==1)
@@ -51,8 +55,23 @@
 					tweet_text_raw.push(tweet_text.item(i).innerText);//innerHTML of andere methods kunnen ook hier
 				  }
 				}
+				
+				//print de text voor testen in <p id='textHolder'></p>
 				document.getElementById('textHolder').innerHTML = tweet_text_raw;
+				
+				//functie om string op te splitsen
+				function splitString(string, separator) {
+					var arrayOfStrings = string.split(separator);
+					tokenised_tweets.push(arrayOfStrings);
+				}
+				
+				//tokenize elke tweet (op basis van een spatie)
+				for (var i=0; i < tweet_text_raw.length; i++){
+					splitString(tweet_text_raw[i], " ");
+				};
+				
 			}
+			
 		</script>
 	</head>
 	<body  onload=processText()><!--/ onmousemove=processText() om dynamisch tweets te verwerken/-->
