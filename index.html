@@ -44,7 +44,13 @@
 			var tweet_text = document.getElementsByClassName("tweet_text");
 			var tweet_text_raw = new Array();
 			var tokenised_tweets = new Array();
+			var tokens = new Array();//voor later
 			var hashtags = new Array();
+			var ats = new Array();// an array to contain everything starting with @ (e.g. @vu_amsterdam, @home)
+			var stopwords = ["gratis","pic","bit","goo","iturl","aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze","die", "dit", "dl", "door", "dr", "ed", "een", "en","er", "enige", "enkele",
+								"enz", "et", "etc", "haar", "het", "hierin", "hoe", "hun", "ik", "in", "inzake", "is", "je", "met", "na", "naar", "nabij", "niet", "no","nog", "nu", "of",
+								"om", "onder", "ons", "onze", "ook", "oorspr", "op", "over", "pas", "pres", "prof", "publ", "sl", "st", "te", "tegen", "ten", "ter", "tot", "uit", "uitg",
+								"vakgr", "van", "vanaf", "vert", "vol", "voor", "voortgez", "voortz", "wat", "wie", "zijn"];
 			
 			function processText(){
 					
@@ -78,15 +84,48 @@
 					for (var j=0; j < tokenised_tweets[i].length; j++){
 						var token = tokenised_tweets[i][j];
 						var hashtag = token.match(/(#\w+)/g);
+						var at = token.match(/(@\w+)/g);
+						var url = token.match(/\w{2}[.]\w{2}/g); //door websites als google.nl kan de url regex niet specifieker dan dit worden
+						var word = token.match(/([a-z,A-z]+)/g);
 						
-						//if match and not gratis hashtag, then add to hashtags array 
+						//remove the hashtags and url's from the tokenised_tweets for further processing
+						if(hashtag != null || url != null){delete tokenised_tweets[i][j];}
+						
+						//if match and not #gratis, then add to hashtags array 
 						if(hashtag != null && hashtag[0].toLowerCase() !="#gratis"){
 							hashtag = hashtag[0].substring(1);//haal de hashtag zelf weg voor string matchen en tellen later
 							hashtags.push(hashtag);
 						}
-					};				
-				};
+						
+						//remove the @'s from the tokenised_tweets and add them to ats array for further processing
+						if(at != null){
+							at = at[0].substring(1);
+							ats.push(at)
+							delete tokenised_tweets[i][j];
+						}
+						
+						//remove anything that isn't a word for further processing (woorden die eindigen met een ? . ! ofzo staan nog in tokenized_tweets, maar zijn bij tokens array eruit gehaald)
+						if(word === null){
+							delete tokenised_tweets[i][j];							
+						}
+						else{
+						tokenised_tweets[i][j] = word[0];
+						}
+						
+						var token = tokenised_tweets[i][j];//dit moet hier staan om een of andere reden... anders werk onderstaande niet
+						
+						if (typeof(token) != "undefined"){ //doordat ik delete gebruik blijven op sommige plekken (een hastag bijv.) undefined plekken over
+							for (var k=0; k < stopwords.length; k++){
 								
+								//remove the stopwords from the tokenised_tweets for further processing
+								if(token.toLowerCase() === stopwords[k]){//(stopword != null){
+									delete tokenised_tweets[i][j];
+								}							
+							};
+						
+						}
+					};				
+				};		
 			}
 
 		</script>
@@ -139,3 +178,12 @@
 		<script type="text/javascript" src="js/barchart.js"></script>
 	</body>
 </html>
+
+ 
+
+
+
+
+
+
+
