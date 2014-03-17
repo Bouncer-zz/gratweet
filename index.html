@@ -44,6 +44,9 @@
 			var tweet_text = document.getElementsByClassName("tweet_text");
 			var tweet_text_raw = new Array();
 			var tokenised_tweets = new Array();
+			var tokenised_tweets_str = new Array();
+			var unique_tokenised_tweets_str = new Array();
+			var unique_tokenised_tweets = new Array();
 			var tokens = new Array();//voor later
 			var hashtags = new Array();
 			var ats = new Array();// an array to contain everything starting with @ (e.g. @vu_amsterdam, @home)
@@ -125,7 +128,30 @@
 						
 						}
 					};				
-				};		
+				};	
+
+				//make 2d array flat and ready for duplicate removal
+				for (var i=0; i < tokenised_tweets.length; i++){
+					tokenised_tweets_str.push(tokenised_tweets[i].toString());
+				};
+				
+				//function to remove duplicates
+				var noDuplicates = function(array) {
+					var newArr = [];
+		
+					for ( var i = 0; i < array.length; i++ ) {
+						found = undefined;
+						for ( var j = 0; j < newArr.length; j++ ) {
+							if (array[i] === newArr[j]){found = true;}
+						}
+						if (!found){
+						newArr.push( array[i] );
+						unique_tokenised_tweets.push(tokenised_tweets[i]);
+						}   
+					}
+				   return newArr;
+				}
+				unique_tokenised_tweets_str = noDuplicates(tokenised_tweets_str);
 			}
 
 		</script>
