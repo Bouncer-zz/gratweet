@@ -44,7 +44,9 @@
 			var tokenised_tweets_str = new Array();
 			var unique_tokenised_tweets_str = new Array();
 			var unique_tokenised_tweets = new Array();
+			var unique_tokens = new Array();
 			var tokens = new Array();//voor later
+			var tokens_histo = new Array();
 			var hashtags = new Array();
 			var ats = new Array();// an array to contain everything starting with @ (e.g. @vu_amsterdam, @home)
 			var stopwords = ["gratis","pic","bit","goo","iturl","aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze","die", "dit", "dl", "door", "dr", "ed", "een", "en","er", "enige", "enkele",
@@ -148,7 +150,53 @@
 					}
 				   return newArr;
 				}
+				
+				//remove duplicates
 				unique_tokenised_tweets_str = noDuplicates(tokenised_tweets_str);
+				
+				//make token list to count word frequency for barchart
+				for (var i=0; i < unique_tokenised_tweets.length; i++){
+					for (var j=0; j < unique_tokenised_tweets[i].length; j++){
+						if (typeof(unique_tokenised_tweets[i][j]) != "undefined"){
+							tokens.push(unique_tokenised_tweets[i][j].toLowerCase());
+						}
+					};	
+				};
+			
+				//get unique tokens
+				var uniqueTokens = function(array) {
+					var newArr = [];
+		
+					for ( var i = 0; i < array.length; i++ ) {
+						found = undefined;
+						for ( var j = 0; j < newArr.length; j++ ) {
+							if (array[i] === newArr[j]){
+								found = true; 
+							}
+						}
+						if (!found){ newArr.push( array[i].toLowerCase() );}   
+					}
+				   return newArr;
+				}
+				//make the unique tokens array
+				unique_tokens = uniqueTokens(tokens);
+				
+				//fill tokens_histo
+				for ( var i = 0; i < unique_tokens.length; i++ ) {
+					tokens_histo.push([unique_tokens[i],1]);
+				}
+				
+				//get unique tokens
+				for ( var i = 0; i < tokens.length; i++ ) {
+					for ( var j = 0; j < tokens_histo.length; j++ ) {
+						if (tokens[i] === tokens_histo[j][0]){
+							tokens_histo[j][1] = tokens_histo[j][1]+1;
+						}
+					}   
+				}
+				
+				//sort tokens_histogram by count
+				tokens_histo = tokens_histo.sort(function(a,b) { return a[1] - b[1]; });
 			}
 
 		</script>
