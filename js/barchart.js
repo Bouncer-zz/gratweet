@@ -1,5 +1,3 @@
-var dataset = [];
-
 var fill = d3.scale.category20();
 	
 var w = 400;
@@ -8,7 +6,6 @@ var h = $('#barchart').height() - 84;
 	var leftpadding = 100;
 	
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-	var barPadding = h / dataset.length / 12;
 	
 	var barchart = d3.select("#barchart")
 		.append("svg")
@@ -29,10 +26,8 @@ var h = $('#barchart').height() - 84;
 		.attr("transform", "translate(0," + (h - padding) + ")")
 		.call(xAxis);
 		
-		
 function updateBarchart(dataset) {
-			//var terms = ["time","person","year","way","day","thing","man","world","life","hand","part","child"]
-			
+		
 			var barPadding = h / dataset.length / (3 + dataset.length);
 
 			xScale = d3.scale.linear()
@@ -48,13 +43,9 @@ function updateBarchart(dataset) {
 				.orient("bottom")
 				.ticks(5);
 			
-			var sortItems = function (a, b) {
-				return b.value - a.value;
-			};
-			
 			var rects = barchart.selectAll("rect")
-				.data(dataset, function(d) { return d[2]; });
-			
+				.data(dataset, function(d) { return d[0]; });
+				
 			// bars
 			rects.enter().append("rect")
 				.attr("width", 0)
@@ -75,7 +66,7 @@ function updateBarchart(dataset) {
 					return yScale(i) + barPadding;
 				})
 				.attr("height", h / dataset.length - barPadding * 2)
-				.style("fill", function(d, i) { return fill(d[2]); });
+				.style("fill", function(d, i) { return fill(i); });
 			
 			rects.exit()
 				.transition()
@@ -85,7 +76,7 @@ function updateBarchart(dataset) {
 
 			// values
 			var values = barchart.selectAll("text.value")
-				.data(dataset, function(d) { return d[2]; });
+				.data(dataset, function(d) { return d[0]; });
 				
 			values.enter().append("text")
 				.attr("class", "value")
@@ -111,7 +102,7 @@ function updateBarchart(dataset) {
 
 			// names
 			var names = barchart.selectAll("text.name")
-				.data(dataset, function(d) { return d[2]; });
+				.data(dataset, function(d) { return d[0]; });
 				
 			names.enter().append("text")
 				.attr("class", "name")
@@ -136,8 +127,6 @@ function updateBarchart(dataset) {
 					return d[0];
 				});
 
-			names.exit()
-				.remove();
 				
 			barchart.select("g")
 				.data(dataset)
