@@ -124,7 +124,9 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 
 			//add the word x amount of times based on score, for histogram
 			for (var w = 0; w < score; w++){
-				tokenised_tweets[i].push(left_tokens[i][k]);
+				if (typeof(tokenised_tweets[i]) != "undefined" && typeof(left_tokens[i][k]) != "undefined"){
+					tokenised_tweets[i].push(left_tokens[i][k]);
+				}
 			};	
 		};
 	};
@@ -136,7 +138,9 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 			var score = weights[r];
 
 			for (var w = 0; w < score; w++){
-				tokenised_tweets[i].push(right_tokens[i][r]);
+				if (typeof(tokenised_tweets[i]) != "undefined" && typeof(right_tokens[i][r]) != "undefined"){
+					tokenised_tweets[i].push(right_tokens[i][r]);
+				}
 			};	
 		};
 	
