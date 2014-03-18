@@ -1,7 +1,7 @@
 var fill = d3.scale.category20();
 	
 var w = 400;
-var h = $('#barchart').height() - 84;
+var h = $('#barchart').height();
 	var padding = 20;
 	var leftpadding = 100;
 	

@@ -42,13 +42,13 @@ class ezTweet {
 	private $cache_enabled = true;
 
 	// Cache interval (minutes)
-	private $cache_interval = 15;
+	private $cache_interval = 10;
 
 	// Path to writable cache directory
-	private $cache_dir = './';
+	private $cache_dir = './cache/';
 
 	// Enable debugging
-	private $debug = false;
+	private $debug = true;
 
 	/**************************************************************************************/
 
@@ -80,7 +80,7 @@ class ezTweet {
 			$CFID = $this->generateCFID();
 			$cache_file = $this->cache_dir.$CFID;
 
-			if(file_exists($cache_file) && (filemtime($cache_file) > (time() - 60 * intval($this->cache_interval)))) {
+			if(file_exists($cache_file) && (filemtime($cache_file) > (time() - intval($this->cache_interval)))) {
 				return file_get_contents($cache_file, FILE_USE_INCLUDE_PATH);
 			} else {
 
