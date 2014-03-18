@@ -2,9 +2,35 @@
 	position:absolute;
 	left: 0px;
 	bottom: 0px;
-	width: 500px;
-	height: 400px;
+	width: calc(50% - 34px);
+	height: calc(50% - 34px);
 	padding:0px;
 	margin: 20px;
 	background-color: #FFF; border:2px solid #333; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; 
+}
+#barchart .bar { 
+	display: inline-block; 
+	width: 20px; 
+	height: 75px;
+	margin-right:2px;
+	background-color: teal;
+}
+#barchart .axis {
+	font-size: 10px;
+}
+#barchart .axis path, #barchart .axis line { 
+	fill: none; 
+	stroke: black; 
+	shape-rendering: crispEdges;
+}
+#barchart .value { 
+	text-align: right;
+	font-family: sans-serif; 
+	font-size: 16px;
+	font-weight: bold;
+}
+#barchart .name {
+	text-align: right;
+	font-family: sans-serif; 
+	font-size: 12px;
 }

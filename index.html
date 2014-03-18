@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Gratweet?</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/d3.v3.js"></script>
+		<script type="text/javascript" src="lib/jquery-1.11.0.js"></script>
 		<script type="text/javascript" charset="utf-8" src="http://vu.bouncer.nl/twitter/jquery.tweet.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/body.css">
 		<link rel="stylesheet" type="text/css" href="css/barchart.css">
@@ -194,6 +195,11 @@
 				
 				//sort tokens_histogram by count
 				tokens_histo = tokens_histo.sort(function(a,b) { return a[1] - b[1]; });
+				
+				var histo = tokens_histo.slice(tokens_histo.length - 10, tokens_histo.length);
+				
+				updateBarchart(histo);
+				console.log(histo);
 			}
 
 		</script>
@@ -203,7 +209,7 @@
 			<img src='images/logo.png' border='0' />
 		</div>
 		<div id='feed' style="overflow: auto;">
-			Twitter feed
+			<h2>Twitter feed</h2>
 			<div class="demo" ><!--/https://twitter.com/search?q = ... zie https://twitter.com/search-home voor de opties /-->
 				<pre class="code">
 					jQuery(function($){
@@ -222,10 +228,10 @@
 			</div>
 		</div>
 		<div id='map'>
-			Map
+			<h2>Map</h2>
 		</div>
 		<div id='barchart'>
-			Barchart
+			<h2>Barchart</h2>
 		</div>
 		
 		<script type="text/javascript" src="js/feed.js"></script>
