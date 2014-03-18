@@ -37,24 +37,11 @@
 			});
 		</script>
 	</head>
-	<body  onload=processText()><!--/ onmousemove=processText() om dynamisch tweets te verwerken/-->
+	<body>
 		<div id='logo'>
 			<img src='images/logo.png' border='0' />
 		</div>
 		<div id='feed' style="overflow: auto;">
-				<script type="text/javascript">
-					$(document).ready(function() {
-						var data = $('#feed').tweet({
-							modpath: 'http://vu.bouncer.nl/twitter/',
-							avatar_size: 32,
-							count: 50,
-							query: "-sex -#sexdating -milf -geil -erotisch -erotische gratis lang:nl include:retweets",
-							refresh_interval: 10,
-							loading_text: "searching twitter..."
-						});
-					});
-				</script>
-			</div>
 		</div>
 		<div id='map'>
 			<h2>Map</h2>
@@ -65,6 +52,21 @@
 		<script type="text/javascript" src="js/barchart.js"></script>
 		<script type="text/javascript" src="js/feed.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#feed').tweet({
+					modpath: 'http://vu.bouncer.nl/twitter/',
+					avatar_size: 32,
+					count: 50,
+					query: "-sex -#sexdating -milf -geil -erotisch -erotische gratis lang:nl include:retweets",
+					refresh_interval: 10,
+					loading_text: "searching twitter..."
+				});
+			});
+			setInterval(function(){ 
+				processText();
+			}, 5000);
+		</script>
 	</body>
 </html>
 
