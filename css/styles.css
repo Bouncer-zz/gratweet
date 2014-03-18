@@ -5,7 +5,7 @@ body{
 	font-weight: 400;
 	font-size: 15px;
 	color: #3a2127;
-	
+	overflow: hidden;
 }
 .logo {
 	float: left;
