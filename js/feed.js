@@ -1,28 +1,29 @@
 //maak variabelen aan voor text processing
-function processText(){
-
-var tweet_text = $(".tweet_text");//$("#feed").val();
+var tweet_text = document.getElementsByClassName("tweet_text");
 var tweet_text_raw = new Array();
 var tokenised_tweets = new Array();
 var tokenised_tweets_str = new Array();
 var unique_tokenised_tweets_str = new Array();
 var unique_tokenised_tweets = new Array();
 var unique_tokens = new Array();
-var tokens = new Array();
-var left_tokens = new Array();
-var right_tokens = new Array();
+var tokens = new Array();//voor later
 var tokens_histo = new Array();
 var hashtags = new Array();
 var ats = new Array();// an array to contain everything starting with @ (e.g. @vu_amsterdam, @home)
-var stopwords = ["pic","bit","goo","iturl","aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze","die", "dit", "dl", "door", "dr", "ed", "een", "en","er", "enige", "enkele",
+var stopwords = ["gratis","pic","bit","goo","iturl","aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze","die", "dit", "dl", "door", "dr", "ed", "een", "en","er", "enige", "enkele",
 					"enz", "et", "etc", "haar", "het", "hierin", "hoe", "hun", "ik", "in", "inzake", "is", "je", "met", "na", "naar", "nabij", "niet", "no","nog", "nu", "of",
 					"om", "onder", "ons", "onze", "ook", "oorspr", "op", "over", "pas", "pres", "prof", "publ", "sl", "st", "te", "tegen", "ten", "ter", "tot", "uit", "uitg",
 					"vakgr", "van", "vanaf", "vert", "vol", "voor", "voortgez", "voortz", "wat", "wie", "zijn"];
-var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-				
-	//haal de text uit de html en stop ze in array
-	for (i=0;i<tweet_text.length;i++){
-		tweet_text_raw.push(tweet_text[i].innerText); 
+
+function processText(){
+		
+	//haal de text uit de node objecten en stop ze in array
+	for (i=0;i<tweet_text.length;i++)
+	{
+	  if (tweet_text.item(i).nodeType==1)
+	  {
+		tweet_text_raw.push(tweet_text.item(i).innerText);//innerHTML of andere methods kunnen ook hier
+	  }
 	}
 	
 	//functie om string op te splitsen
@@ -86,68 +87,6 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 		};				
 	};	
 
-	//filter out all the undefined elements
-	for (var i=0; i < tokenised_tweets.length; i++){
-		tokenised_tweets[i] = tokenised_tweets[i].filter(function(n){ return n != undefined });
-	};
-	
-	//give weights to the words closer to the word 'gratis'
-	for (var i=0; i < tokenised_tweets.length; i++){
-
-		//find the index of the word gratis
-		for (var j=0; j < tokenised_tweets[i].length; j++){
-			
-			var index = -10;
-			//if the word gratis is present:
-			if (tokenised_tweets[i][j].toLowerCase() === "gratis"){
-
-				//set index
-				index = j;
-				
-				//split the sentence into two parts. SPECIAL CASES: index = 0 OF index = tokenised_tweets[i].length. Dan zal for loop overgeslagen worden.
-				var left = tokenised_tweets[i].slice(0,index);
-				left_tokens.push(left);
-				var right = tokenised_tweets[i].slice(index+1,tokenised_tweets[i].length);
-				right_tokens.push(right);
-			}
-		};	
-	};
-
-	//give weights to tokens in the left_tokens array based on proximity to the word 'gratis'
-	for (var i=0; i < left_tokens.length; i++){
-		console.log(left_tokens[i]);
-		
-		for (var k = left_tokens[i].length-1; k > 0; k--){
-
-			var weight_index = left_tokens[i].length-(k+1);
-			var score = weights[weight_index];
-
-			//add the word x amount of times based on score, for histogram
-			for (var w = 0; w < score; w++){
-				if (typeof(tokenised_tweets[i]) != "undefined" && typeof(left_tokens[i][k]) != "undefined"){
-					tokenised_tweets[i].push(left_tokens[i][k]);
-				}
-			};	
-		};
-	};
-	
-	//give weights to right_tokens array
-	for (var i=0; i < right_tokens.length; i++){
-		for (var r=0; r < right_tokens[i].length; r++){
-
-			var score = weights[r];
-
-			for (var w = 0; w < score; w++){
-				if (typeof(tokenised_tweets[i]) != "undefined" && typeof(right_tokens[i][r]) != "undefined"){
-					tokenised_tweets[i].push(right_tokens[i][r]);
-				}
-			};	
-		};
-	
-	};
-	
-	/////////////////////////////////////////
-	
 	//make 2d array flat and ready for duplicate removal
 	for (var i=0; i < tokenised_tweets.length; i++){
 		tokenised_tweets_str.push(tokenised_tweets[i].toString());
