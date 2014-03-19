@@ -5,7 +5,7 @@ body{
 	font-weight: 400;
 	font-size: 15px;
 	color: #3a2127;
-	overflow: hidden;
+	overflow: auto;
 }
 .logo {
 	float: left;
@@ -113,12 +113,16 @@ position:absolute;
 	z-index: -10;
 	height: 380px;
 	}
+	#query {
+		background: red;
+		
+	}
 	ul.tweet_list {
 	position: relative;
 	
 	background: transparent;
 	z-index: 0;
-	margin-bottom: 20px;
+
 }
 .tweet_time {
 	position: absolute;
