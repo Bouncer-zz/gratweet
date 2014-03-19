@@ -22,10 +22,17 @@ var time_related_words = ["april", "augustus", "dag", "dagen", "dagje","datum", 
 "jaar", "januari", "jaren", "julie", "juni", "lente", "maand", "maandag", "maanden", "maandje", "maart", "mei", "november", "nu", "oktober",
  "september","straks", "tijdens", "uur","vandaag","vanavond", "vrijdag", "week", "weekje", "weken", "winter", "woensdag", "zaterdag", "zomer","zometeen", "zondag"];
 var personal_pronouns = ["hij", "hun","ieder","iedere","iedereen", "ik", "je", "jij","jou", "jouw", "jullie", "onze", "u", "uw","uzelf", "we", "wij", "ze", "zij"];// based on http://www.dutchgrammar.com/en/?n=Verbs.re01
-var filterwords = ["!", ",", ".", "a", "actie","af","alle","alles","alleen", "b","bedankt","bedanken","ben", "best","bestel","bestelt","bestellen" ,"best", "beste", "beste", "bestel","betekent", "beter","betekende","breng","brengen","brengt", "bit", "c", "check", "d", "dan","daar","deed","deel","delen",
- "doe","doen","download","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","gebruik","gebruiken","gebruikt", "geen","geef","geven","geeft","gewoon","gingen", "goed", "goo","gr", "graag", "h","haal","halen","haalt","hebt","hebt,","hebben","hele","het","hier", "hij","houden","houdt","hield", "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans","klik",
- "kom", "komen","krijg","krijgen","krijgt", "kunnen", "l","lang","lees", "leuk", "leuke","like","lief","lieve", "m","mee","meer","meld", "maak", "maakt", "maar","mag", "maken","mij","mijn","moet","moest","moeten","mp", "n","niets","niet","nieuw","nieuwe", "nieuwsbrief","niks","nodig", "nu", "o","online","ontvang", "ooit", "op","opgelet","opletten",
- "ow", "p","plaats", "pic","pijpen","probeer", "q", "r","retweet","retweeten","retweetactie" ,"rt","rtactie","rtacties", "s", "schrijf","share", "t","tinyurl","twitter", "u", "u", "v","veel", "via","volg","volgen","volgt", "voordeel", "voordelig","vraag","vragen", "w", "waar", "weg","wel","wellicht", "wil", "willen", "win", "winnen","wtf", "x", "y","youtu", "z","zag","zien"];
+var filterwords = ["!", ",", ".", "a", "actie","af","alle","alles","alleen","as", "b","bedankt","bedanken","ben", "best","bestel","bestelt","bestellen" ,"best",
+ "beste", "beste", "bestel","betekent", "beter","betekende","breng","brengen","brengt", "bit", "c", "check", "d", "dan","daar","deed","deel","delen","dld",
+ "doe","doen","download","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","gebruik","gebruiken","gebruikt", "geen","geef","geven","geeft",
+ "gewoon","gingen", "goed", "goo","gr", "graag", "h","haal","halen","haalt","hebt","hebt,","hebben","hele","het","hier", "hij","houden","houdt","hield",
+ "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans","klik", "kom", "komen","kost","kosten","kostte","krijg","krijgen","krijgt", "kunnen", "l",
+ "laat","lang","lees", "leuk", "leuke","like","lief","lieve", "m","mee","meer","meld", "maak", "maakt", "maar","mag", "maken","mij","mijn","minimaal",
+ "moet","mocht","mochten","moest","moeten","mp", "n","neem","neemt","nemen","niets","niet","nieuw","nieuwe", "nieuwsbrief","niks","nodig","nou",
+ "nu", "o","online","ontvang", "ooit", "op","opgelet","opletten", "ow", "p","plaats", "pic","pijpen","probeer", "q", "r","retweet","retweeten",
+ "retweetactie" ,"rt","rtactie","rtacties", "s", "schrijf","share", "t","tinyurl","twitter", "u", "u", "v","veel", "via","volg","volgen","volgers",
+ "volgt", "voordeel", "voordelig","voorstel","voorstellen","vraag","vragen", "w", "waar", "weg","wel","wellicht","weer", "wil", "willen", "win",
+ "winnen","wtf", "x", "y","youtu", "z","zag","zien"];
 var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 				
 	//haal de text uit de html en stop ze in array
