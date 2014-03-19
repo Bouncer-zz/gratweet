@@ -48,61 +48,33 @@ max 4/5 slides
 		</script>
 
 </head>
-<body onload=processText()>
+<body>
 <div class="container">
 			
      <!-- start header here-->
 	<header>
 	
-<div id="paper">
-<div id="logohead"><img src="images/banner.png" class="logo">
-</div>
-    <div class="item">
-    <div id='feed'>
-    <img src="images/button-tweets.png" class="button-tweets">
-		
-			
-					<script type="text/javascript">
-			$(document).ready(function() {
-				$('#query').tweet({
-					modpath: 'http://vu.bouncer.nl/twitter/',
-					avatar_size: 32,
-					count: 50,
-					query: "-sex -#sexdating -buttpug -cockring -milf -geil -geile -erotisch -erotische gratis lang:nl include:retweets",
-					refresh_interval: 10,
-					loading_text: "searching twitter..."
-				});
-			});
-			setInterval(function(){ 
-				processText();
-			}, 5000);
-		</script>
-				<div id="query">
+		<div id="paper">
+			<div id="logohead"><img src="images/banner.png" class="logo"></div>
+			<div class="item">
+				<div id='feed'>
+					<img src="images/button-tweets.png" class="button-tweets">
+					<div id="query"></div>
 				</div>
-		
-    </div>
-<div id='barchart'>
-<img src="images/button-chart.png">
-			
+				<div id='barchart'>
+					<img src="images/button-chart.png">
+				</div> 
+			</div>
+			<img src="images/copyright.png" class="copyright">   
 		</div>
-
-
-       
-                
-    </div>
-    
-  
-<img src="images/copyright.png" class="copyright">   
-</div>
-
-</div>
 
 	</header><!-- end header -->
     
 </div>
-<script type="text/javascript" src="js/barchart.js"></script>
-		<script type="text/javascript" src="js/feed.js"></script>
-		<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/barchart.js"></script>
+	<script type="text/javascript" src="js/feed.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/tweetloader.js"></script>
 		
 
 </body>
