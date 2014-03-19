@@ -23,8 +23,8 @@ var time_related_words = ["april", "augustus", "dag", "dagen", "dagje","datum", 
  "september", "tijdens", "uur","vandaag", "vrijdag", "week", "weekje", "weken", "winter", "woensdag", "zaterdag", "zomer", "zondag"];
 var personal_pronouns = ["hij", "hun", "ik", "je", "jij", "jouw", "jullie", "onze", "u", "uw", "we", "wij", "ze", "zij"];// based on http://www.dutchgrammar.com/en/?n=Verbs.re01
 var filterwords = ["!", ",", ".", "a", "actie", "b", "best", "best", "beste", "beste", "bestel","betekent", "beter", "bit", "c", "check", "d", "dan","daar",
- "doe","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","geen","gewoon", "goed", "goo", "graag", "h","hebt","hebt,","hele","het","hier", "hij", "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans",
- "kom", "komen","krijg","krijgen", "kunnen", "l","lees", "leuk", "leuke", "m","mee","meer", "maak", "maakt", "maar","mag", "maken","mp", "n", "nieuwsbrief", "nu", "o","ontvang", "ooit", "op",
+ "doe","download","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","geen","gewoon", "goed", "goo", "graag", "h","hebt","hebt,","hele","het","hier", "hij", "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans",
+ "kom", "komen","krijg","krijgen", "kunnen", "l","lees", "leuk", "leuke", "m","mee","meer","meld", "maak", "maakt", "maar","mag", "maken","mp", "n", "nieuwsbrief", "nu", "o","ontvang", "ooit", "op",
  "ow", "p", "pic", "q", "r", "rt", "s", "schrijf","share", "t","tinyurl", "u", "u", "v", "via", "voordeel", "voordelig", "w", "waar", "weg","wel","wellicht", "wil", "willen", "win", "winnen", "x", "y", "z"];
 var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 				
@@ -229,10 +229,14 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 	//remove the word gratis
 	for ( var i = 0; i < tokens_histo.length; i++ ) {
 		if(tokens_histo[i][0]==="gratis"){
-			delete tokens_histo[i][0];
+			delete tokens_histo[i];
 		}
 	};
 
+		//filter out all the undefined elements
+	for (var i=0; i < tokens_histo.length; i++){
+		tokens_histo = tokens_histo.filter(function(n){ return n != undefined });
+	};
 	
 	var histo = tokens_histo.slice(tokens_histo.length - 10, tokens_histo.length);
 	
