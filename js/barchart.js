@@ -49,7 +49,7 @@ function updateBarchart(dataset) {
 			// bars
 			rects.enter().append("rect")
 				.attr("width", 0)
-				.style("fill", function(d, i) { return fill(1); });
+				.style("fill", function(d, i) { return fill(i); });
 		
 			rects.sort(function(a, b) {
 					return d3.descending(a[1], b[1]);
@@ -66,7 +66,6 @@ function updateBarchart(dataset) {
 					return yScale(i) + barPadding;
 				})
 				.attr("height", h / dataset.length - barPadding * 2)
-				.style("fill", function(d, i) { return fill(i); });
 			
 			rects.exit()
 				.transition()

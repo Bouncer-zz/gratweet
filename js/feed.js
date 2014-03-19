@@ -116,7 +116,6 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 
 	//give weights to tokens in the left_tokens array based on proximity to the word 'gratis'
 	for (var i=0; i < left_tokens.length; i++){
-		console.log(left_tokens[i]);
 		
 		for (var k = left_tokens[i].length-1; k > 0; k--){
 
