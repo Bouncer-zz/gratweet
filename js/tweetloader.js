@@ -1,4 +1,4 @@
-var tweets = 15;
+var tweets = 5;
 var refresh = tweets * 2000;
 $(document).ready(function() {
 	$('#data').tweet({
@@ -19,17 +19,22 @@ $(document).ready(function() {
 function loadTweets() {
 	// select all new tweets
 	var $data = $('#data ul li');
+	var length = 0;
 	$data.each(function(i, value) {
-		var id = $(this).find(".tweet_time a").attr("href");
+		var id = $(value).find(".tweet_time a").attr("href");
 		if($('#query .tweet_list li .tweet_time a[href="'+id+'"]').length != 0) {
 			delete $data[i];
+		} else if($('#query .tweet_list li .tweet_time a[href="'+id+'"]').length == 0) {
+			length++;
 		}
 	});
+
 	$($data.get().reverse()).each(function(i, value) {
-		$(this).delay((refresh/$data.length)*i).show(1,function() {
-				//console.log($(this));
-				$(this).hide().prependTo($('#query .tweet_list')).show('slow');
+		if(i < length) {
+			$(value).delay((refresh/(length))*(i)).show(1,function() {
+				$(value).hide().prependTo($('#query .tweet_list')).show('slow');
 				processText();
-		});
+			});
+		}
 	});
 }
