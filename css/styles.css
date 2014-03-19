@@ -105,48 +105,42 @@ position:absolute;
 
 
 #query {
-	 overflow-y: auto;
+	overflow-y: auto;
 	overflow-x: hidden;
 	text-align: left;
-	margin-top: -0px;
 	margin-left: 25px;
 	z-index: -10;
 	height: 380px;
-	}
-	#query {
-		background: red;
-		
+	
 	}
 	ul.tweet_list {
 	position: relative;
-	
 	background: transparent;
 	z-index: 0;
-
+}
+ul.tweet_list li {
+		position: relative;
+		background: transparent;
+		border-bottom: 1px solid #2ec3ef;
+		margin-top: -30px;
 }
 .tweet_time {
-	position: absolute;
 	margin-left: 10px;
-	margin-top: -8px;
+	margin-top: 0px;
 }
 .tweet_time a:link {color:red;}
 .tweet_time a:visited {color:pink;}
 .tweet_time a:hover {color:yellow;}
 	
+.tweet_avatar img{
+	margin-top: 30px;
+}
 
-.tweet_avatar img {
-	margin-top: 14px;
-}
 .tweet_text {
-	margin: 10px 0 0 10px;
-	position: absolute;
-}
-.tweet_first {
-	background: pink;
+	margin: 25px 0 0 10px;
 }
 .tweet_even, .tweet_odd {
-	border-bottom: 1px solid #2ec3ef;
-	height: 75px;
+
 }
 
 	
@@ -166,7 +160,7 @@ position:absolute;
 	display: inline-block; 
 	width: 20px; 
 	height: 75px;
-	margin-right:2px;
+	margin-right:0px;
 	background-color: teal;
 }
 #barchart .axis {
