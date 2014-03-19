@@ -14,11 +14,18 @@ var right_tokens = new Array();
 var tokens_histo = new Array();
 var hashtags = new Array();
 var ats = new Array();// an array to contain everything starting with @ (e.g. @vu_amsterdam, @home)
-var stopwords = ["aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze","die", "dit", "dl", "door", "dr", "ed", "een", "en","er", "enige", "enkele",
-					"enz", "et", "etc", "haar", "het", "hierin", "hoe", "hun", "ik", "in", "inzake", "is", "je", "met", "na", "naar", "nabij", "niet", "no","nog", "nu", "of",
-					"om", "onder", "ons", "onze", "ook", "oorspr", "op", "over", "pas", "pres", "prof", "publ", "sl", "st", "te", "tegen", "ten", "ter", "tot", "uit", "uitg",
-					"vakgr", "van", "vanaf", "vert", "vol", "voor", "voortgez", "voortz", "wat", "wie", "zijn"];
-var filterwords = ["pic","bit","goo","iturl"];
+var stopwords = ["aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "deze", "die", "dit", "dl", "door", "dr", "ed", "een", "en", 
+"enige", "enkele", "enz", "er", "et", "etc", "haar", "het", "hierin", "hoe", "hun", "ik", "in", "inzake", "is", "je", "met", "na", "naar", 
+"nabij", "niet", "no", "nog", "nu", "of", "om", "onder", "ons", "onze", "ook", "oorspr", "op", "over", "pas", "pres", "prof", "publ", "sl", 
+"st", "te", "tegen", "ten", "ter", "tot", "uit", "uitg", "vakgr", "van", "vanaf", "vert", "vol", "voor", "voortgez", "voortz", "wat", "wie", "zijn"];//based on http://monchito.nl/blog/stopwoordenlijst and http://biblio.vub.ac.be/vubissmartweb/opac/stopwoorden.htm
+var time_related_words = ["april", "augustus", "dag", "dagen", "dagje", "december", "dinsdag", "donderdag", "februari", "gedurende", "herfst", 
+"jaar", "januari", "jaren", "julie", "juni", "lente", "maand", "maandag", "maanden", "maandje", "maart", "mei", "november", "nu", "oktober",
+ "september", "tijdens", "uur","vandaag", "vrijdag", "week", "weekje", "weken", "winter", "woensdag", "zaterdag", "zomer", "zondag"];
+var personal_pronouns = ["hij", "hun", "ik", "je", "jij", "jouw", "jullie", "onze", "u", "uw", "we", "wij", "ze", "zij"];// based on http://www.dutchgrammar.com/en/?n=Verbs.re01
+var filterwords = ["!", ",", ".", "a", "actie", "b", "best", "best", "beste", "beste", "bestel", "beter", "bit", "c", "check", "d", "dan","daar",
+ "doe","duur", "e", "f", "fb", "g", "ga", "gaan", "gaat", "goed", "goo", "graag", "h","het","hier", "hij", "i","iemand", "iturl", "j", "jij", "k", "kan", "kans",
+ "kom", "komen","krijg","krijgen", "kunnen", "l", "leuk", "leuke", "m","meer", "maak", "maakt", "maar", "maken","mp", "n", "nieuwsbrief", "nu", "o","ontvang", "ooit", "op", "p", "pic", "q", "r",
+ "rt", "s", "schrijf", "t", "u", "u", "v", "via", "voordeel", "voordelig", "w", "waar", "weg", "wil", "willen", "win", "winnen", "x", "y", "z"];
 var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 				
 	//haal de text uit de html en stop ze in array
@@ -78,9 +85,13 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 				for (var k=0; k < stopwords.length; k++){
 					
 					//remove the stopwords and filterwords from the tokenised_tweets for further processing
-					if(token.toLowerCase() === stopwords[k] || token.toLowerCase() === filterwords[k]){
+					if(token.toLowerCase() === stopwords[k] || token.toLowerCase() === filterwords[k] ||
+						token.toLowerCase() === personal_pronouns[k] || token.toLowerCase() === time_related_words[k] ){
 						delete tokenised_tweets[i][j];
-					}							
+					}
+					if(token.toLowerCase() === filterwords[k]){
+						delete tokenised_tweets[i][j];
+					}					
 				};
 			
 			}
