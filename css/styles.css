@@ -117,30 +117,40 @@ position:absolute;
 	position: relative;
 	background: transparent;
 	z-index: 0;
+
 }
 ul.tweet_list li {
 		position: relative;
 		background: transparent;
-		border-bottom: 1px solid #2ec3ef;
-		margin-top: -30px;
+		border-bottom: 1px dashed #2ec3ef;
+		padding-bottom: 20px;
 }
 .tweet_time {
-	margin-left: 10px;
-	margin-top: 0px;
+font-size: 14px;
+position: absolute;
+	margin-left: 5px;
+	margin-top: -2px;
 }
-.tweet_time a:link {color:red;}
-.tweet_time a:visited {color:pink;}
-.tweet_time a:hover {color:yellow;}
+.tweet_time a:link {color:#000; text-decoration: none;}
+.tweet_time a:visited {color:#000; text-decoration: none;}
+.tweet_time a:hover {color:#000; text-decoration: none;}
 	
 .tweet_avatar img{
-	margin-top: 30px;
+	position: relative;
 }
-
+.tweet_first {
+	border-top: 1px dashed #2ec3ef;
+}
 .tweet_text {
-	margin: 25px 0 0 10px;
+font-size: 12px;
+position: relative;
 }
-.tweet_even, .tweet_odd {
 
+.tweet_text a:link {color:#2ec3ef; text-decoration:none;}
+.tweet_text a:visited {color:#2ec3ef; text-decoration: none;}
+.tweet_text a:hover {color:#2ec3ef; text-decoration: none;}
+.tweet_hashtag {
+	font-weight: bold;
 }
 
 	
@@ -160,7 +170,6 @@ ul.tweet_list li {
 	display: inline-block; 
 	width: 20px; 
 	height: 75px;
-	margin-right:0px;
 	background-color: teal;
 }
 #barchart .axis {
