@@ -74,31 +74,6 @@ function updateBarchart(dataset) {
 				.remove();
 
 			// values
-			var values = barchart.selectAll("text.value")
-				.data(dataset, function(d) { return d[0]; });
-				
-			values.enter().append("text")
-				.attr("class", "value")
-				.attr("x", leftpadding - 20);
-
-			values.sort(function(a, b) {
-					return d3.descending(a[1], b[1]);
-				})
-				.transition()
-				.duration(1000)
-				.text(function(d) {
-					return Math.round(d[1]);
-				})
-				.attr("x", function(d) {
-					return xScale(d[1]) - 30;
-				})
-				.attr("y", function(d, i) { 
-					return yScale(i) + (h / dataset.length / 2) + 6;
-				});
-				
-			values.exit()
-				.remove();
-
 			// names
 			var names = barchart.selectAll("text.name")
 				.data(dataset, function(d) { return d[0]; });
@@ -125,7 +100,8 @@ function updateBarchart(dataset) {
 				.text(function(d, i) {
 					return d[0];
 				});
-
+			
+			names.exit().remove();
 				
 			barchart.select("g")
 				.data(dataset)
