@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Gratweet?</title>
-		<script type="text/javascript" src="lib/d3.v3.js"></script>
+<!--
+what, uniqueness, motivate, why would people use it, does it already exist?
+data: why, size, type, what could be alternative
+approach: used this data in order to do ... 
+whats the smart part of it: explain algorithms in order to analyze data dont show them
+do this f.e. using examples; what problem do we have and how do we solve it.
+explain visualizations
+last slide: demonstration
+max 4/5 slides
+-->
+<html>
+<head>
+<title>GraTweet</title>
+<script type="text/javascript" src="lib/d3.v3.js"></script>
 		<script type="text/javascript" src="lib/jquery-1.11.0.js"></script>
 		<script type="text/javascript" charset="utf-8" src="http://vu.bouncer.nl/twitter/jquery.tweet.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/body.css">
-		<link rel="stylesheet" type="text/css" href="css/barchart.css">
-		<link rel="stylesheet" type="text/css" href="css/map.css">
-		<link rel="stylesheet" type="text/css" href="css/feed.css">
-		<script type="text/javascript">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+   <script type="text/javascript">
 			function randomString(length) {
 			  var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
 			  var str = '';
@@ -36,43 +46,85 @@
 			  }).each(function(i, e){ eval($(e).text()); });
 			});
 		</script>
-	</head>
-	<body  onload=processText()><!--/ onmousemove=processText() om dynamisch tweets te verwerken/-->
-		<div id='logo'>
-			<img src='images/logo.png' border='0' />
-		</div>
-		<div id='feed' style="overflow: auto;">
-				<script type="text/javascript">
-					$(document).ready(function() {
-						var data = $('#feed').tweet({
-							modpath: 'http://vu.bouncer.nl/twitter/',
-							avatar_size: 32,
-							count: 50,
-							query: "-sex -#sexdating -milf -geil -erotisch -erotische gratis lang:nl include:retweets",
-							refresh_interval: 10,
-							loading_text: "searching twitter..."
-						});
-					});
-				</script>
+
+</head>
+<body onload=processText()>
+<div class="container">
+			
+     <!-- start header here-->
+	<header>
+	
+<div id="paper">
+<div id="logohead"><img src="images/banner.png" class="logo">
+</div>
+    <div class="item">
+    <div id='feed'>
+    <img src="images/button-tweets.png" class="button-tweets">
+			<div class="demo" >
+			
+					<script type="text/javascript">
+			$(document).ready(function() {
+				$('#query').tweet({
+					modpath: 'http://vu.bouncer.nl/twitter/',
+					avatar_size: 32,
+					count: 50,
+					query: "-sex -#sexdating -buttpug -cockring -milf -geil -geile -erotisch -erotische gratis lang:nl include:retweets",
+					refresh_interval: 10,
+					loading_text: "searching twitter..."
+				});
+			});
+			setInterval(function(){ 
+				processText();
+			}, 5000);
+		</script>
+				<div id="query" class='query'>
+				</div>
 			</div>
-		</div>
-		<div id='map'>
-			<h2>Map</h2>
-		</div>
-		<div id='barchart'>
+    </div>
+<div id='barchart'>
+<img src="images/button-chart.png">
+			
 		</div>
 
-		<script type="text/javascript" src="js/barchart.js"></script>
+
+       
+                
+    </div>
+    
+  
+<img src="images/copyright.png" class="copyright">   
+</div>
+
+</div>
+
+	</header><!-- end header -->
+    
+</div>
+<script type="text/javascript" src="js/barchart.js"></script>
 		<script type="text/javascript" src="js/feed.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
-	</body>
+		
+
+</body>
 </html>
 
- 
 
-
-
-
-
-
-
+					<!--/HIER KOMEN DE TWEETS TE STAAN, in het volgende formaat:
+						<ul class="tweet_list">
+							<li class="tweet_first tweet_odd"></li>
+							<li class="tweet_even"></li>
+							<li class="tweet_odd"></li>
+							<li class="tweet_even">
+								<a class="tweet_avatar" href=""></a>
+								<span class="tweet_time"></span>
+								<span class="tweet_text">
+									"nu"
+									<a href="..." class="tweet_hashtag">#gratis</a>
+									"paraplu"
+									<span class="@">@</span>
+									"bla bla bla"
+								</span>
+							</li>
+						</ul>
+					/-->
+				
