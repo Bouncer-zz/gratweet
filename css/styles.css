@@ -124,6 +124,7 @@ ul.tweet_list li {
 		background: transparent;
 		border-bottom: 1px dashed #2ec3ef;
 		padding-bottom: 20px;
+		list-style-type: none;
 }
 .tweet_time {
 font-size: 14px;
