@@ -96,10 +96,10 @@ position:absolute;
 	}
 	#feed {
 	
-	width: 375px;
+	width: 470px;
 	height: 400px;
 	float: right;
-	border-left: 2px solid #2ec3ef;
+	border-left: 0px dashed #2ec3ef;
 	
 }
 
@@ -162,7 +162,7 @@ position: relative;
 	
 	#barchart {
 	overflow: hidden;
-	width: 400px;
+	width: 330px;
 	height: 400px;
 	float: left;
 	
@@ -201,7 +201,8 @@ svg {
 	
 }
 .button-map {
-background: yellow;	
-
-	float: center;
+padding: 20px 0 10px 0;
+}
+.button-chart {
+	float:right;
 }
