@@ -128,7 +128,7 @@ ul.tweet_list li {
 }
 .tweet_time {
 font-size: 14px;
-position: relative;
+position: absolute;
 	margin-left: 5px;
 	margin-top: -2px;
 }

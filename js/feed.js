@@ -1,7 +1,7 @@
 //maak variabelen aan voor text processing
 function processText(){
 
-var tweet_text = $(".tweet_text");//$("#feed").val();
+var tweet_text = $("#query ul li .tweet_text");
 var tweet_text_raw = new Array();
 var tokenised_tweets = new Array();
 var tokenised_tweets_str = new Array();
@@ -231,7 +231,9 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 	}
 	
 	//sort tokens_histogram by count
-	tokens_histo = tokens_histo.sort(function(a,b) { return a[1] - b[1]; });
+	tokens_histo = tokens_histo.sort(function(a,b) {
+		return a[1] == b[1] ? 0 : (a[1] > b[1] ? -1 : 1)
+	});
 	
 	//remove the word gratis
 	for ( var i = 0; i < tokens_histo.length; i++ ) {
@@ -244,8 +246,7 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 	for (var i=0; i < tokens_histo.length; i++){
 		tokens_histo = tokens_histo.filter(function(n){ return n != undefined });
 	};
-	
-	var histo = tokens_histo.slice(tokens_histo.length - 10, tokens_histo.length);
+	var histo = tokens_histo.slice(0, 10);
 	
 	updateBarchart(histo);
 }

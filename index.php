@@ -42,7 +42,7 @@ class ezTweet {
 	private $cache_enabled = true;
 
 	// Cache interval (minutes)
-	private $cache_interval = 0.25;
+	private $cache_interval = 0.5;
 
 	// Path to writable cache directory
 	private $cache_dir = './cache/';
