@@ -18,14 +18,14 @@ var stopwords = ["aan", "afd", "als", "bij", "dat", "de", "den", "der", "des", "
 "enige", "enkele", "enz", "er", "et", "etc", "haar", "het", "hierin", "hoe", "hun", "ik", "in", "inzake", "is", "je", "met", "na", "naar", 
 "nabij", "niet", "no", "nog", "nu", "of", "om", "onder", "ons", "onze", "ook", "oorspr", "op", "over", "pas", "pres", "prof", "publ", "sl", 
 "st", "te", "tegen", "ten", "ter", "tot", "uit", "uitg", "vakgr", "van", "vanaf", "vert", "vol", "voor", "voortgez", "voortz", "wat", "wie", "zijn"];//based on http://monchito.nl/blog/stopwoordenlijst and http://biblio.vub.ac.be/vubissmartweb/opac/stopwoorden.htm
-var time_related_words = ["april", "augustus", "dag", "dagen", "dagje","datum", "december", "dinsdag", "donderdag", "februari", "gedurende", "herfst", 
+var time_related_words = ["april", "augustus", "dag", "dagen", "dagje","datum", "december", "dinsdag", "donderdag", "februari", "gedurende","gisteren", "herfst", 
 "jaar", "januari", "jaren", "julie", "juni", "lente", "maand", "maandag", "maanden", "maandje", "maart", "mei", "november", "nu", "oktober",
- "september", "tijdens", "uur","vandaag", "vrijdag", "week", "weekje", "weken", "winter", "woensdag", "zaterdag", "zomer", "zondag"];
-var personal_pronouns = ["hij", "hun", "ik", "je", "jij", "jouw", "jullie", "onze", "u", "uw", "we", "wij", "ze", "zij"];// based on http://www.dutchgrammar.com/en/?n=Verbs.re01
-var filterwords = ["!", ",", ".", "a", "actie", "b", "best", "best", "beste", "beste", "bestel","betekent", "beter", "bit", "c", "check", "d", "dan","daar",
- "doe","download","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","geen","gewoon", "goed", "goo", "graag", "h","hebt","hebt,","hele","het","hier", "hij", "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans",
- "kom", "komen","krijg","krijgen", "kunnen", "l","lees", "leuk", "leuke", "m","mee","meer","meld", "maak", "maakt", "maar","mag", "maken","mp", "n", "nieuwsbrief", "nu", "o","ontvang", "ooit", "op",
- "ow", "p", "pic", "q", "r", "rt", "s", "schrijf","share", "t","tinyurl", "u", "u", "v", "via", "voordeel", "voordelig", "w", "waar", "weg","wel","wellicht", "wil", "willen", "win", "winnen", "x", "y", "z"];
+ "september","straks", "tijdens", "uur","vandaag","vanavond", "vrijdag", "week", "weekje", "weken", "winter", "woensdag", "zaterdag", "zomer","zometeen", "zondag"];
+var personal_pronouns = ["hij", "hun","ieder","iedereen", "ik", "je", "jij","jou", "jouw", "jullie", "onze", "u", "uw","uzelf", "we", "wij", "ze", "zij"];// based on http://www.dutchgrammar.com/en/?n=Verbs.re01
+var filterwords = ["!", ",", ".", "a", "actie","af","alle","alles","alleen", "b","bedankt","bedanken","ben", "best", "best", "beste", "beste", "bestel","betekent", "beter","betekende", "bit", "c", "check", "d", "dan","daar","deed","deel","delen",
+ "doe","doen","download","dus","duur", "e", "f", "fb","fuck", "g", "ga", "gaan", "gaat","gebruik","gebruiken","gebruikt", "geen","gewoon","gingen", "goed", "goo", "graag", "h","haal","halen","haalt","hebt","hebt,","hebben","hele","het","hier", "hij","houden","houdt","hield", "i","iemand","ipv", "iturl", "j", "jij", "k", "kan", "kans","klik",
+ "kom", "komen","krijg","krijgen", "kunnen", "l","lang","lees", "leuk", "leuke","like","lief","lieve", "m","mee","meer","meld", "maak", "maakt", "maar","mag", "maken","mijn","moet","moest","moeten","mp", "n","niets","niet","nieuw","nieuwe", "nieuwsbrief","niks","nodig", "nu", "o","online","ontvang", "ooit", "op","opgelet","opletten",
+ "ow", "p","plaats", "pic","pijpen","probeer", "q", "r","retweet","retweeten","retweetactie" ,"rt","rtactie","rtacties", "s", "schrijf","share", "t","tinyurl","twitter", "u", "u", "v","veel", "via","volg","volgen","volgt", "voordeel", "voordelig","vraag","vragen", "w", "waar", "weg","wel","wellicht", "wil", "willen", "win", "winnen","wtf", "x", "y", "z","zag","zien"];
 var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 				
 	//haal de text uit de html en stop ze in array
