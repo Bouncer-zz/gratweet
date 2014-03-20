@@ -206,3 +206,6 @@ padding: 20px 0 10px 0;
 .button-chart {
 	float:right;
 }
+
+#map-canvas { height: 300px;
+width: 800px; }

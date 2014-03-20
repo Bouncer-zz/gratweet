@@ -46,6 +46,22 @@ max 4/5 slides
 			  }).each(function(i, e){ eval($(e).text()); });
 			});
 		</script>
+		    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+			<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhU-XUSfMnpCuisnc2PuJZgRxd-k4VscI&sensor=true">
+			</script>
+			<script type="text/javascript">
+			var geocoder = new google.maps.Geocoder();
+			function initialize() {
+			var mapOptions = {
+			center: new google.maps.LatLng(52.23, 4.55),
+			zoom: 8
+			};
+			map = new google.maps.Map(document.getElementById("map-canvas"),
+			mapOptions);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+			</script>
 
 </head>
 <body>
@@ -65,8 +81,9 @@ max 4/5 slides
 				<div id='barchart'>
 					<img src="images/button-chart.png" class="button-chart">
 				</div> 
+				
 				<img src="images/button-map.png" class="button-map">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1252526.1666616322!2d5.773755015625045!3d52.18268918821546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1snl!2s!4v1395243251202" width="800" height="400" frameborder="0" style="border:0"></iframe>
+					<div id="map-canvas"></div>
 			</div>
 			<img src="images/copyright.png" class="copyright">   
 		</div>
