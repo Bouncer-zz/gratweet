@@ -97,7 +97,7 @@ position:absolute;
 	#feed {
 	
 	width: 470px;
-	height: 400px;
+	height: 420px;
 	float: right;
 	border-left: 0px dashed #2ec3ef;
 	
@@ -110,7 +110,7 @@ position:absolute;
 	text-align: left;
 	margin-left: 25px;
 	z-index: -10;
-	height: 380px;
+	height: 400px;
 	
 	}
 	ul.tweet_list {
@@ -163,7 +163,7 @@ position: relative;
 	#barchart {
 	overflow: hidden;
 	width: 330px;
-	height: 400px;
+	height: 420px;
 	float: left;
 	
 }
