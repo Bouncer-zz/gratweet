@@ -1,5 +1,6 @@
 var tweets = 15;
 var refresh = tweets * 2000;
+
 $(document).ready(function() {
 	$('#data').tweet({
 		modpath: 'http://vu.bouncer.nl/twitter/',
@@ -37,7 +38,6 @@ function loadTweets() {
 				var location = $('#query .tweet_list li .location').html();
 				
 				if(location.length > 0) {
-					console.log(location);
 					// To add the marker to the map, use the 'map' property
 					geocoder.geocode( { 'address': location}, function(results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {

@@ -70,7 +70,7 @@ function updateBarchart(dataset) {
 			names.enter().append("text")
 				.attr("class", "name")
 				.attr("text-anchor", "right")
-				.attr("x", -10)
+				.attr("x", -100)
 				.text(function(d, i) {
 					return d[0];
 				});
