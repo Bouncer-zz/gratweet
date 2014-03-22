@@ -34,6 +34,9 @@ function loadTweets() {
 		if(i < length) {
 			$(value).delay((refresh/(length))*(i)).show(1,function() {
 				$(value).hide().prependTo($('#query .tweet_list')).show('slow');
+				if(!(window.mozInnerScreenX == null)) {
+					$(value).css("display", "inline-block");
+				}
 				processText();
 				var location = $('#query .tweet_list li .location').html();
 				
