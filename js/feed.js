@@ -48,7 +48,9 @@ var weights = [192,128,64,32,16,8,6,4,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 	
 	//tokenize each tweet (based on a whitespace)
 	for (var i=0; i < tweet_text_raw.length; i++){
-		splitString(tweet_text_raw[i], " ");
+		if (typeof(tweet_text_raw[i]) != "undefined"){
+			splitString(tweet_text_raw[i], " ");
+		}
 	};
 	
 	//filter out hashtags, and @'s, while keeping the words in a tweet
