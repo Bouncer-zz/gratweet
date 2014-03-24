@@ -20,49 +20,9 @@ max 4/5 slides
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
-   <script type="text/javascript">
-			function randomString(length) {
-			  var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
-			  var str = '';
-			  for (var i = 0; i < length; i++) {
-				str += chars[Math.floor(Math.random() * chars.length)];
-			  }
-			  return str;
-			}
-			var rnd = randomString(8);
-
-			jQuery(function($) {
-			  $(".rnd").replaceWith(rnd);
-
-
-			  $(".demo .code").hide().each(function(i,e){
-				$(e).before($('Twitter feed').
-							  click(function(ev) {
-								$(e).slideToggle();
-								$(this).hide();
-								ev.preventDefault();
-							  }));
-
-			  }).each(function(i, e){ eval($(e).text()); });
-			});
-		</script>
-		    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-			<script type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhU-XUSfMnpCuisnc2PuJZgRxd-k4VscI&sensor=true">
-			</script>
-			<script type="text/javascript">
-			var geocoder = new google.maps.Geocoder();
-			function initialize() {
-			var mapOptions = {
-			center: new google.maps.LatLng(52.23, 4.55),
-			zoom: 8
-			};
-			map = new google.maps.Map(document.getElementById("map-canvas"),
-			mapOptions);
-			}
-			google.maps.event.addDomListener(window, 'load', initialize);
-			</script>
-
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhU-XUSfMnpCuisnc2PuJZgRxd-k4VscI&sensor=true"></script>
+	<script type="text/javascript" src="js/map.js"></script>
 </head>
 <body>
 <div class="container">
@@ -93,7 +53,6 @@ max 4/5 slides
 </div>
 	<script type="text/javascript" src="js/barchart.js"></script>
 	<script type="text/javascript" src="js/feed.js"></script>
-	<script type="text/javascript" src="js/map.js"></script>
 	<script type="text/javascript" src="js/tweetloader.js"></script>
 </body>
 </html>

@@ -34,9 +34,6 @@ function loadTweets() {
 		if(i < length) {
 			$(value).delay((refresh/(length))*(i)).show(1,function() {
 				$(value).hide().prependTo($('#query .tweet_list')).show('slow');
-				if(!(window.mozInnerScreenX == null)) {
-					$(value).css("display", "inline-block");
-				}
 				processText();
 				var location = $('#query .tweet_list li .location').html();
 				
@@ -47,7 +44,14 @@ function loadTweets() {
 							map.panTo(results[0].geometry.location);
 							var marker = new google.maps.Marker({
 								map: map,
+								animation: google.maps.Animation.DROP,
 								position: results[0].geometry.location
+							});
+							var infowindow = new google.maps.InfoWindow({
+								content: $('#query .tweet_list li').html()
+							});
+							google.maps.event.addListener(marker, 'click', function() {
+								infowindow.open(map,marker);
 							});
 						}
 					});

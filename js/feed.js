@@ -1,3 +1,28 @@
+function randomString(length) {
+  var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+  var str = '';
+  for (var i = 0; i < length; i++) {
+	str += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return str;
+}
+var rnd = randomString(8);
+
+jQuery(function($) {
+  $(".rnd").replaceWith(rnd);
+
+
+  $(".demo .code").hide().each(function(i,e){
+	$(e).before($('Twitter feed').
+				  click(function(ev) {
+					$(e).slideToggle();
+					$(this).hide();
+					ev.preventDefault();
+				  }));
+
+  }).each(function(i, e){ eval($(e).text()); });
+});
+
 //maak variabelen aan voor text processing
 function processText(){
 
